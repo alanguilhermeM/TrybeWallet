@@ -1,5 +1,5 @@
 // Esse reducer será responsável por tratar as informações da pessoa usuária
-import { ADD_EMAIL } from '../actions';
+import { REQUEST_API_SUCCESS } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -10,10 +10,10 @@ const INITIAL_STATE = {
 
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case ADD_EMAIL:
+  case REQUEST_API_SUCCESS:
     return {
       ...state,
-      email: action.email,
+      currencies: action.payload,
     };
   default:
     return state;
