@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import user from '../redux/reducers';
 
 class Header extends Component {
   render() {
     const { email } = this.props;
-    console.log(email);
     return (
       <div>
         <h3 data-testid="email-field">{ email }</h3>
