@@ -18,7 +18,7 @@ const wallet = (state = INITIAL_STATE, action) => {
   case REQUEST_API_EXPENSES:
     return {
       ...state,
-      expenses: action.expenses,
+      expenses: [...state.expenses, action.payload],
     };
   default:
     return state;

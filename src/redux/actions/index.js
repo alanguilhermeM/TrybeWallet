@@ -8,9 +8,9 @@ export const addEmail = (email) => ({
   email,
 });
 
-export const requestApiExpenses = (expenses) => ({
+export const requestApiExpenses = (payload) => ({
   type: REQUEST_API_EXPENSES,
-  expenses,
+  payload,
 });
 
 export const requestApiSuccess = (payload) => ({
