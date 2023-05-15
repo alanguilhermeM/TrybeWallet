@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { minhaAcaoAssincrona, requestApiExpenses, thunkExpenses } from '../redux/actions';
+import { minhaAcaoAssincrona, thunkExpenses } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
     id: 0,
-    value: 0,
+    value: '',
     description: '',
     currency: 'USD',
     method: 'Dinheiro',
@@ -32,7 +32,14 @@ class WalletForm extends Component {
       ...previusState,
       id: previusState.id + 1,
     }));
-    return dispatch(requestApiExpenses(this.state));
+    this.setState({
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+    });
+    return dispatch(thunkExpenses(this.state));
   };
 
   render() {

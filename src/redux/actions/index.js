@@ -35,13 +35,9 @@ export const minhaAcaoAssincrona = () => async (dispatch) => {
   }
 };
 
-export const thunkExpenses = () => async (dispatch) => {
-  try {
-    const api = 'https://economia.awesomeapi.com.br/json/all';
-    const response = await fetch(api);
-    const data = await response.json();
-    dispatch(requestApiSuccess(data));
-  } catch (error) {
-    dispatch(requestApiFailure(error));
-  }
+export const thunkExpenses = (state) => async (dispatch) => {
+  const api = 'https://economia.awesomeapi.com.br/json/all';
+  const response = await fetch(api);
+  const data = await response.json();
+  dispatch(requestApiExpenses({ ...state, exchangeRates: data }));
 };
