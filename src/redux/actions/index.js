@@ -2,6 +2,7 @@ export const ADD_EMAIL = 'ADD_EMAIL';
 export const REQUEST_API_EXPENSES = 'REQUEST_API_EXPENSES';
 export const REQUEST_API_SUCCESS = 'REQUEST_API_SUCCESS';
 export const DELETE_EXPENSES = 'DELETE_EXPENSES';
+export const EDIT_EXPENSES = 'EDIT_EXPENSES';
 
 export const addEmail = (email) => ({
   type: ADD_EMAIL,
@@ -20,6 +21,11 @@ export const requestApiSuccess = (payload) => ({
 
 export const deleteExpenses = (payload) => ({
   type: DELETE_EXPENSES,
+  payload,
+});
+
+export const editExpenses = (payload) => ({
+  type: EDIT_EXPENSES,
   payload,
 });
 
