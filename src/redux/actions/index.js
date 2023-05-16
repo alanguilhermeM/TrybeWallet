@@ -1,7 +1,7 @@
 export const ADD_EMAIL = 'ADD_EMAIL';
 export const REQUEST_API_EXPENSES = 'REQUEST_API_EXPENSES';
 export const REQUEST_API_SUCCESS = 'REQUEST_API_SUCCESS';
-export const REQUEST_API_FAILURE = 'REQUEST_API_FAILURE';
+export const DELETE_EXPENSES = 'DELETE_EXPENSES';
 
 export const addEmail = (email) => ({
   type: ADD_EMAIL,
@@ -18,9 +18,9 @@ export const requestApiSuccess = (payload) => ({
   payload,
 });
 
-export const requestApiFailure = (error) => ({
-  type: REQUEST_API_FAILURE,
-  error,
+export const deleteExpenses = (payload) => ({
+  type: DELETE_EXPENSES,
+  payload,
 });
 
 export const minhaAcaoAssincrona = () => async (dispatch) => {

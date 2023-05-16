@@ -1,22 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { deleteExpenses } from '../redux/actions';
 
 class Table extends Component {
+  deleteExpense = (id) => {
+    const { expenses, dispatch } = this.props;
+    const filtrado = expenses.filter((expense) => expense.id !== id);
+    return dispatch(deleteExpenses(filtrado));
+  };
+
   render() {
     const { expenses } = this.props;
     return (
       <table>
         <thead>
-          <th>Descrição</th>
-          <th>Tag</th>
-          <th>Método de pagamento</th>
-          <th>Valor</th>
-          <th>Moeda</th>
-          <th>Câmbio utilizado</th>
-          <th>Valor convertido</th>
-          <th>Moeda de conversão</th>
-          <th>Editar/Excluir</th>
+          <tr>
+            <th>Descrição</th>
+            <th>Tag</th>
+            <th>Método de pagamento</th>
+            <th>Valor</th>
+            <th>Moeda</th>
+            <th>Câmbio utilizado</th>
+            <th>Valor convertido</th>
+            <th>Moeda de conversão</th>
+            <th>Editar/Excluir</th>
+          </tr>
         </thead>
         <tbody>
           {expenses.map((expense) => (
@@ -32,7 +41,16 @@ class Table extends Component {
                   .toFixed(2)}
               </td>
               <td>Real</td>
-              <td>Editar/Excluir</td>
+              <td>
+                <button>Editar</button>
+                <button
+                  data-testid="delete-btn"
+                  onClick={ () => this.deleteExpense(expense.id) }
+                >
+                  Excluir
+
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -48,6 +66,7 @@ function mapStateToProps(state) {
 }
 
 Table.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
