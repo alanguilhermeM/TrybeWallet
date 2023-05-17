@@ -1,5 +1,6 @@
 // Esse reducer será responsável por tratar as informações da pessoa usuária
-import { REQUEST_API_SUCCESS, REQUEST_API_EXPENSES, DELETE_EXPENSES, EDIT_EXPENSES } from '../actions';
+import { REQUEST_API_SUCCESS, REQUEST_API_EXPENSES, DELETE_EXPENSES,
+  EDIT_EXPENSES, SAVE_EDIT } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -28,7 +29,14 @@ const wallet = (state = INITIAL_STATE, action) => {
   case EDIT_EXPENSES:
     return {
       ...state,
+      editor: true,
       idToEdit: action.payload,
+    };
+  case SAVE_EDIT:
+    return {
+      ...state,
+      editor: false,
+      expenses: [...action.payload],
     };
   default:
     return state;

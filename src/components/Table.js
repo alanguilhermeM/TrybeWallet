@@ -10,12 +10,6 @@ class Table extends Component {
     return dispatch(deleteExpenses(filtrado));
   };
 
-  editExpense = () => {
-    const { expenses, idToEdit } = this.props;
-    const idEdit = expenses.filter((expense) => expense.id === idToEdit);
-    console.log(idEdit);
-  };
-
   render() {
     const { expenses, dispatch } = this.props;
     return (
@@ -52,7 +46,6 @@ class Table extends Component {
                   data-testid="edit-btn"
                   onClick={ () => {
                     dispatch(editExpenses(expense.id));
-                    this.editExpense();
                   } }
                 >
                   Editar
